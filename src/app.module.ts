@@ -5,6 +5,7 @@ import { ProductsModule } from './features/products/products.module';
 import * as dotenv from 'dotenv';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { BoxesModule } from './features/boxes/boxes.module';
+import { ReportModule } from './features/report/report.module';
 
 dotenv.config();
 
@@ -22,6 +23,7 @@ dotenv.config();
     }),
     ProductsModule,
     BoxesModule,
+    ReportModule,
   ],
   controllers: [AppController],
   providers: [AppService],

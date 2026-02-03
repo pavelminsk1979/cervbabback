@@ -9,5 +9,6 @@ import { BoxesService } from './boxes.service';
   imports: [TypeOrmModule.forFeature([Product, Box])],
   controllers: [BoxesController],
   providers: [BoxesService],
+  exports: [BoxesService],
 })
 export class BoxesModule {}
