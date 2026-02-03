@@ -1,7 +1,6 @@
 import {
   Column,
   CreateDateColumn,
-  DeleteDateColumn,
   Entity,
   ManyToOne,
   PrimaryGeneratedColumn,
@@ -19,9 +18,8 @@ export class Product {
   @CreateDateColumn()
   createdAt: Date;
 
-  @DeleteDateColumn()
-  deletedAt: Date | null;
-
-  @ManyToOne(() => Box, (box) => box.products)
+  @ManyToOne(() => Box, (box) => box.products, {
+    onDelete: 'CASCADE',
+  })
   box: Box;
 }

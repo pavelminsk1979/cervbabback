@@ -1,8 +1,12 @@
 import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import { CreateProduct } from './dto/CreateProduct.dto';
-import { ProductDto, ProductWithStatus } from '../../types/products';
-import { ResponseStatus } from '../../types/common';
+import {
+  DeleteProduct,
+  ItemsCount,
+  ProductDto,
+  ProductWithStatus,
+} from '../../types/products';
 
 @Controller('products')
 export class ProductsController {
@@ -14,8 +18,8 @@ export class ProductsController {
   }
 
   @Get('count')
-  countActiveProducts(): Promise<{ countProducts: number }> {
-    return this.productsService.countActiveProducts();
+  getCountProducts(): Promise<ItemsCount> {
+    return this.productsService.getCountProducts();
   }
 
   @Post()
@@ -24,7 +28,7 @@ export class ProductsController {
   }
 
   @Delete(':id')
-  deleteProduct(@Param('id') id: string): Promise<ResponseStatus> {
+  deleteProduct(@Param('id') id: string): Promise<DeleteProduct> {
     return this.productsService.deleteProduct(id);
   }
 }

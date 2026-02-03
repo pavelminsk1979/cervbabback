@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { ProductsModule } from './features/products/products.module';
 import * as dotenv from 'dotenv';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { BoxesModule } from './features/boxes/boxes.module';
 
 dotenv.config();
 
@@ -20,6 +21,7 @@ dotenv.config();
       synchronize: false,
     }),
     ProductsModule,
+    BoxesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

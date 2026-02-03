@@ -1,7 +1,6 @@
 import {
   Column,
   CreateDateColumn,
-  DeleteDateColumn,
   Entity,
   OneToMany,
   PrimaryGeneratedColumn,
@@ -13,18 +12,17 @@ export class Box {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
-  name: string;
+  @Column({ unique: true })
+  numberName: number;
 
-  @OneToMany(() => Product, (product) => product.box)
+  @OneToMany(() => Product, (product) => product.box, {
+    cascade: ['remove'],
+  })
   products: Product[];
 
   @Column({ default: false })
-  isFull: boolean; // флаг, что коробка набрана до 5 продуктов
+  isFull: boolean;
 
   @CreateDateColumn()
   createdAt: Date;
-
-  @DeleteDateColumn()
-  deletedAt: Date | null;
 }
